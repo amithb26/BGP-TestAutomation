@@ -42,15 +42,12 @@ Suite Teardown    Teardown Actions
 
 *** Test Cases ***
 
-
-
-
-Bring_up Phase
+Initiation_Phase
     
     Configure IP addresses as per the topology
 	    Configure ip address 
 	    Set loopback interface
-   
+  
     Configure OSPF within AS2 to advertise the connected networks
 	    Enable OSPF in devices present in AS2 and set the ospf neighbors
 
@@ -70,8 +67,7 @@ Bring_up Phase
 
             Redistribute routes from OSPF into BGP
    
-
-Operational Phase
+Validation_Phase
 
     Check if ip address is set and interface is up 
 
@@ -82,7 +78,19 @@ Operational Phase
     Check if all routes are learnt by devices  
 
 
-	 	
+Sustenance_Phase	 	
+
+     Track the scale on eBGP peers
+
+     Track the scale on iBGP peers
+
+     Verify the number of routes the DUT is able to receive 
+
+     Verify the number of routes the DUT is able to announce to a single iBGP neighbor
+
+     Evaluate peering convergence speed
+ 
+     
 
      
 
