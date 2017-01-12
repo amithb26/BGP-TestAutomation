@@ -21,13 +21,11 @@ class IBGP:
 			child.sendcontrol('m')
 			child.sendcontrol('m')
 			flag = child.expect([hostname+'>',hostname+'#','Router\>','Router\#',pexpect.EOF,pexpect.TIMEOUT],timeout=90)
-			#print 'flag =%d' % flag
 			if flag==0 or flag==2:
 				Dev.Login(Device,child)
 				if Action == 'enable':
 					if (isinstance(Interface,list)):
 						for interface in Interface:
-			#					print interface
 								configs = """
 								configure terminal
 								router bgp %d
@@ -40,8 +38,6 @@ class IBGP:
 								execute.execute(child,commands)
 								time.sleep(6)
 								child.sendcontrol('m')
-			#					print "IBGP configured in %s " % (Device)
-				#				time.sleep(15)
 						child.sendline('exit')
 						child.sendcontrol('m')
 						
@@ -57,9 +53,8 @@ class IBGP:
 						""" % (AS_id,interface,AS_id,interface)
 						commands = configs.split('\n')
 						execute.execute(child,commands)
-				#		time.sleep(15)
 						child.sendcontrol('m')
-			#			print "IBGP configured in %s " % (Device)
+			
 					
 
 				else:
@@ -71,9 +66,7 @@ class IBGP:
 					""" % (AS_id)
 					commands = configs.split('\n')
 					execute.execute(child,commands)
-				#	time.sleep(15)
 					child.sendcontrol('m')
-			#		print "IBGP disabled in %s" % Device
 			
 
 		
@@ -94,8 +87,6 @@ class IBGP:
 								execute.execute(child,commands)
 								time.sleep(6)
 								child.sendcontrol('m')
-			#					print "IBGP configured in %s " % (Device)
-				#				time.sleep(15)
 						child.sendline('exit')
 						child.sendcontrol('m')
 						
@@ -112,10 +103,7 @@ class IBGP:
 						""" % (AS_id,interface,AS_id,interface)
 						commands = configs.split('\n')
 						execute.execute(child,commands)
-				#		time.sleep(15)
 						child.sendcontrol('m')
-			#			print "IBGP configured in %s " % (Device)
-					
 
 				else:
 					unconfig = """
@@ -126,13 +114,7 @@ class IBGP:
 					""" % (AS_id)
 					commands = configs.split('\n')
 					execute.execute(child,commands)
-				#	time.sleep(15)
 					child.sendcontrol('m')
-			#		print "IBGP disable in %s" % Device
-			
-		
-		#	else:
-			#	print 'Expected prompt not found'
 
 		        return True
 		
@@ -154,7 +136,6 @@ class IBGP:
 			child.sendcontrol('m')
 			child.sendcontrol('m')
 			flag = child.expect([hostname+'>',hostname+'#','Router\>','Router\#',pexpect.EOF,pexpect.TIMEOUT],timeout=90)
-			#print 'flag =%d' % flag
 			if flag==0 or flag==2:
 				Dev.Login(Device,child)
 				configs = """
@@ -165,9 +146,8 @@ class IBGP:
 				""" % (AS_id)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-				#time.sleep(15)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
+			
 
 			if flag == 1 or flag == 3:
 				configs = """
@@ -178,13 +158,7 @@ class IBGP:
 				""" % (AS_id)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-				#time.sleep(15)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
-
-			
-		#	else:
-			#	print 'Expected prompt not found'
 
 			return True
 		
@@ -211,13 +185,11 @@ class IBGP:
 			child.sendcontrol('m')
 			child.sendcontrol('m')
 			flag = child.expect([hostname+'>',hostname+'#','Router\>','Router\#',pexpect.EOF,pexpect.TIMEOUT],timeout=90)
-			#print 'flag =%d' % flag
 			if flag==0 or flag==2:
 				Dev.Login(Device,child)
 				if Action == 'enable':
 					if (isinstance(Interface,list)):
 						for interface in Interface:
-			#					print interface
 								configs = """
 								configure terminal
 								router bgp %d
@@ -229,8 +201,6 @@ class IBGP:
 								execute.execute(child,commands)
 								time.sleep(6)
 								child.sendcontrol('m')
-			#					print "IBGP configured in %s " % (Device)
-				#				time.sleep(15)
 						child.sendline('exit')
 						child.sendcontrol('m')
 						
@@ -245,11 +215,8 @@ class IBGP:
 						""" % (AS_id,interface,neighbor_AS_id)
 						commands = configs.split('\n')
 						execute.execute(child,commands)
-				#		time.sleep(15)
 						child.sendcontrol('m')
-			#			print "IBGP configured in %s " % (Device)
-					
-
+			
 				else:
 					unconfig = """
 					configure terminal
@@ -259,17 +226,13 @@ class IBGP:
 					""" % (AS_id)
 					commands = configs.split('\n')
 					execute.execute(child,commands)
-				#	time.sleep(15)
 					child.sendcontrol('m')
-			#		print "IBGP disabled in %s" % Device
 			
-
-		
 			if flag == 1 or flag == 3:
 				if Action == 'enable':
 					if (isinstance(Interface,list)):
 						for interface in Interface:
-			#					print interface
+			
 								configs = """
 								configure terminal
 								router bgp %d
@@ -279,10 +242,7 @@ class IBGP:
 								""" % (AS_id,interface,neighbor_AS_id)
 								commands = configs.split('\n')
 								execute.execute(child,commands)
-				#				time.sleep(6)
 								child.sendcontrol('m')
-			#					print "IBGP configured in %s " % (Device)
-				#				time.sleep(15)
 						child.sendline('exit')
 						child.sendcontrol('m')
 						
@@ -297,11 +257,8 @@ class IBGP:
 						""" % (AS_id,interface,neighbor_AS_id)
 						commands = configs.split('\n')
 						execute.execute(child,commands)
-				#		time.sleep(15)
 						child.sendcontrol('m')
-			#			print "IBGP configured in %s " % (Device)
-					
-
+			
 				else:
 					unconfig = """
 					configure terminal
@@ -311,14 +268,8 @@ class IBGP:
 					""" % (AS_id)
 					commands = configs.split('\n')
 					execute.execute(child,commands)
-				#	time.sleep(15)
 					child.sendcontrol('m')
-			#		print "IBGP disable in %s" % Device
 			
-		
-		#	else:
-			#	print 'Expected prompt not found'
-
 		        return True
 		
 		else:
@@ -337,7 +288,6 @@ class IBGP:
 			child.sendcontrol('m')
 			child.sendcontrol('m')
 			flag = child.expect([hostname+'>',hostname+'#','Router\>','Router\#',pexpect.EOF,pexpect.TIMEOUT],timeout=90)
-			#print 'flag =%d' % flag
 			if flag==0 or flag==2:
 				Dev.Login(Device,child)
 				configs = """
@@ -348,9 +298,8 @@ class IBGP:
 				""" % (AS_id,Interface,mask)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-				#time.sleep(15)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
+			
 
 			if flag == 1 or flag == 3:
 				configs = """
@@ -361,14 +310,8 @@ class IBGP:
 				""" % (AS_id,Interface,mask)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-				#time.sleep(15)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
-
 			
-			#else:
-			#	print 'Expected prompt not found'
-
 			return True
 		
 		else:
@@ -389,7 +332,6 @@ class IBGP:
 			child.sendcontrol('m')
 			child.sendcontrol('m')
 			flag = child.expect([hostname+'>',hostname+'#','Router\>','Router\#',pexpect.EOF,pexpect.TIMEOUT],timeout=90)
-			#print 'flag =%d' % flag
 			if flag==0 or flag==2:
 				Dev.Login(Device,child)
 				configs = """
@@ -400,10 +342,8 @@ class IBGP:
 				""" % (Process_id,AS_id)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-				#time.sleep(5)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
-
+			
 			if flag == 1 or flag == 3:
 				configs = """
 				configure terminal
@@ -413,14 +353,8 @@ class IBGP:
 				""" % (Process_id,AS_id)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-				#time.sleep(5)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
-
-			
-			#else:
-			#	print 'Expected prompt not found'
-
+		
 			return True
 		
 		else:
@@ -440,7 +374,6 @@ class IBGP:
 			child.sendcontrol('m')
 			child.sendcontrol('m')
 			flag = child.expect([hostname+'>',hostname+'#','Router\>','Router\#',pexpect.EOF,pexpect.TIMEOUT],timeout=90)
-			#print 'flag =%d' % flag
 			if flag==0 or flag==2:
 				Dev.Login(Device,child)
 				configs = """
@@ -451,9 +384,8 @@ class IBGP:
 				""" % (AS_id,Interface)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-				#time.sleep(5)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
+			
 
 			if flag == 1 or flag == 3:
 				configs = """
@@ -464,14 +396,8 @@ class IBGP:
 				""" % (AS_id,Interface)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-				#time.sleep(5)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
-
 			
-			#else:
-			#	print 'Expected prompt not found'
-
 			return True
 		
 		else:

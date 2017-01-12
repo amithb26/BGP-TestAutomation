@@ -18,7 +18,6 @@ def checking_operabilty(Device,command):
 			child.sendcontrol('m')
 			child.sendcontrol('m')
 			flag = child.expect([hostname+'>',hostname+'#','Router\>','Router\#',pexpect.EOF,pexpect.TIMEOUT],timeout=90)
-			#print 'flag =%d' % flag
 			if flag==0 or flag==2:
 				Dev.Login(Device,child)
 				configs = """
@@ -26,23 +25,16 @@ def checking_operabilty(Device,command):
 				""" % (command)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-			#	time.sleep(15)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
-
+			
 			if flag == 1 or flag == 3:
 				configs = """
 				%s
 				""" % (command)
 				commands = configs.split('\n')
 				execute.execute(child,commands)
-			#	time.sleep(15)
 				child.sendcontrol('m')
-			#	print "BGP synchronization enabled in %s " % (Device)
-
 			
-			#else:
-			#	print 'Expected prompt not found'
 
 			return True
 		

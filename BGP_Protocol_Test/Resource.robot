@@ -201,5 +201,24 @@ Check if all routes are learnt by devices
     \    ${result}=    Run Keyword and Continue On Failure    checking_operabilty    ${ELEMENT}    show ip bgp
     \    Log    Routes learnt by ${Element}
     \    Run Keyword If    ${result}==False    FAIL    routes not learnt ${ELEMENT}  	 
+
+
+Track the scale on eBGP peers
+    Log To Console    Tracking the scale on eBGP peers
+
+Track the scale on iBGP peers
+    Log To Console    Tracking the scale on iBGP peers
+
+Verify the number of routes the DUT is able to receive
+    Log To Console    Verifying the number of routes the DUT is able to receive 
+
+Verify the number of routes the DUT is able to announce to a single iBGP neighbor
+    Log To Console    Verifying the number of routes the DUT is able to announce
+
+Evaluate peering convergence speed
+    Log To Console    Evaluating peering convergence speed
+
+
+
     
 
