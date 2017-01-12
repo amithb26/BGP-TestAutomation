@@ -110,8 +110,7 @@ class Devices:
 							commands = configs.split('\n')
 							execute.execute(child,commands)
 							child.sendcontrol('m')
-							child.sendline('exit')
-					        child.sendcontrol('m')
+							
 					else:
 						interface = device_data['Link_Details'][Lnk][Device]
 						interface_add = device_data['Device_Details'][Device][interface]
